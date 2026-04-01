@@ -1,0 +1,7 @@
+record_id,appointment_id,diagnosis,treatment
+1,1,Healthy,Annual check-up
+2,2,Skin rash,Topical cream applied
+3,3,Routine vaccination,Vaccines administered
+4,4,Post-surgery,Follow-up check
+5,5,Dental issues,Dental cleaning performed
+6,6,Mild dehydration,Fluids administered

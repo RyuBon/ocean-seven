@@ -1,0 +1,7 @@
+prescription_id,record_id,medicine,dosage,frequency
+1,1,Amoxicillin,250mg,2x/day
+2,2,Carprofen,50mg,1x/day
+3,3,Vitamin B12,1ml,3x/week
+4,4,Prednisone,10mg,1x/day
+5,5,Metronidazole,200mg,2x/day
+6,6,Furosemide,25mg,1x/day

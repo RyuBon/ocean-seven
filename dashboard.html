@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - Ocean Seven Veterinary Hospital</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 🌊 SECTION 1: Vertical Navbar -->
+  <div class="section1">
+    <img src="assets/logo.png" alt="Logo" class="logo">
+
+    <div class="icon-list">
+      <img src="assets/fish.png" alt="Patients" onclick="loadTable('patients.csv')" class="nav-icon">
+      <img src="assets/doctor.png" alt="Doctors" onclick="loadTable('doctors.csv')" class="nav-icon">
+      <img src="assets/health.png" alt="Appointments" onclick="loadTable('appointments.csv')" class="nav-icon">
+      <img src="assets/heart.png" alt="Medical Records" onclick="loadTable('medical_records.csv')" class="nav-icon">
+      <img src="assets/records.png" alt="Prescriptions" onclick="loadTable('prescriptions.csv')" class="nav-icon">
+      <img src="assets/person.png" alt="Owners" onclick="loadTable('owners.csv')" class="nav-icon">
+    </div>
+  </div>
+
+  <!-- 🌊 SECTION 2: Sidebar Header -->
+  <div class="section2">
+    <h1>OCEAN SEVEN</h1>
+    <h2>Veterinary Clinic</h2>
+
+    <div class="text-buttons">
+      <p onclick="loadTable('patients.csv')">Patients</p>
+      <p onclick="loadTable('doctors.csv')">Doctors</p>
+      <p onclick="loadTable('appointments.csv')">Appointments</p>
+      <p onclick="loadTable('medical_records.csv')">Medical Records</p>
+      <p onclick="loadTable('prescriptions.csv')">Prescriptions</p>
+      <p onclick="loadTable('owners.csv')">Owners</p>
+    </div>
+  </div>
+
+  <!-- 🌊 SECTION 3: Table Container -->
+  <div class="section3">
+    <div class="table-box">
+      <!-- Top row: search + file input -->
+      <div class="top-row">
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search...">
+          <img src="assets/magnifying-glass.png" class="search-icon">
+        </div>
+
+        <div class="file-import" style="z-index: 10;"> <!-- ensure clickable -->
+          <input type="file" id="csvFileInput" accept=".csv">
+          <div class="file-preview" id="filePreview">No file attached</div>
+          <div class="import-save-buttons">
+            <button id="importBtn" onclick="importCSV()">Import CSV</button>
+            <button id="saveBtn" onclick="downloadCSV()">Save CSV</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Current Table Label -->
+      <div id="currentTable" class="current-table-label">No table loaded</div>
+
+      <!-- Table Container -->
+      <div id="tableContainer"></div>
+    </div>
+  </div>
+
+  <!-- 🫧 Bubbles -->
+  <div class="bubbles"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

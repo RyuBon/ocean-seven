@@ -1,0 +1,607 @@
+:root {
+  --bg-right: #FFEEDE;
+  --bg-left: #1B4A5A;
+  --section-color: #1B4A5A;
+  --section1-top: #8EC1B8;
+  --text-dune: #E1C699;
+  --text-sub: #FFEEDE;
+  --header-color: #48626A;
+  --stroke-color: #D2944B;
+  --row1: #FFEEDE;
+  --row2: #FFE3CA;
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: 'Fredoka', Arial, sans-serif;
+  overflow-x: hidden;
+  background: linear-gradient(to right, var(--bg-left) 20%, var(--bg-right) 80%);
+}
+
+/* ===== SECTION 1: Vertical Navbar ===== */
+.section1 {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 100px;
+  height: calc(100vh - 60px);
+  background: linear-gradient(to bottom, var(--section1-top) 10%, var(--section-color) 90%);
+  border-top-right-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  z-index: 20;
+}
+
+.section1 .logo { width: 60px; margin-bottom: 50px; }
+
+.icon-list { display: flex; flex-direction: column; gap: 50px; }
+
+.nav-icon { width: 50px; cursor: pointer; transition: transform 0.3s ease; }
+.nav-icon:hover { transform: scale(1.2); }
+
+/* ===== SECTION 2: Sidebar Header ===== */
+.section2 {
+  position: fixed;
+  top: 0;
+  left: 100px;
+  width: 400px;
+  height: 100vh;
+  background-color: var(--section-color);
+  border-top-right-radius: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 80px 20px 20px 20px;
+  z-index: 15;
+}
+
+.section2 h1 { font-size: 42px; color: var(--text-dune); margin:0 0 10px 0; }
+.section2 h2 { font-size: 24px; color: var(--text-sub); margin:0 0 40px 0; font-weight: normal; letter-spacing: 1px; }
+
+.text-buttons { display:flex; flex-direction: column; gap: 71px; }
+.text-buttons p { margin:0; cursor:pointer; color:var(--text-sub); font-size:24px; font-weight:bold; transition:color 0.2s; }
+.text-buttons p:hover { color: #8EC1B8; }
+
+/* ===== SECTION 3: Table Container ===== */
+.section3 {
+  margin-left: 540px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 30px;
+}
+
+.table-box {
+  width: 95%;
+  height: 90vh;
+  padding: 20px;
+  background: linear-gradient(to right, var(--bg-right) 70%, var(--section-color) 30%);
+  border-radius: 20px;
+  box-shadow: inset 0 4px 15px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  z-index: 990;
+  gap: 10px;
+}
+
+/* Top row: search + file input */
+.top-row { display:flex; justify-content: space-between; gap: 20px; align-items:flex-start; }
+
+.search-container { position: relative; max-width: 300px; flex:1; margin-top: 30px;}
+#searchInput {
+  width: 280%;
+  padding: 12px 35px 12px 10px;
+  font-size:16px;
+  background-color: var(--text-dune);
+  border: 2px solid #ccc;
+  border-radius: 12px;
+  font-weight:bold;
+}
+.search-icon { position:absolute; right:-570px; top:50%; transform:translateY(-50%); width:60px; height:60px; pointer-events:none; }
+
+/* File input and buttons */
+.file-import {
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap: 5px;
+  padding: 30px;
+}
+
+#csvFileInput {
+  border:none;
+  border-radius:12px;
+  padding:8px 15px;
+  background-color: var(--header-color);
+  color: var(--bg-right);
+  cursor:pointer;
+}
+
+#csvFileInput::-webkit-file-upload-button {
+  cursor:pointer;
+  padding:8px 15px;
+  border:none;
+  border-radius:12px;
+  background-color: #48626A;
+  color: #FFEEDE;
+}
+
+.file-preview { font-size:14px; color:#ccc; margin-top:3px; }
+
+/* Import & Save Buttons */
+.import-save-buttons {
+  display:flex;
+  gap:50px;
+  margin-top:10px;
+}
+
+#importBtn { background-color:#8BBEB6; color:#1B4A5A; border-radius:12px; padding:8px 15px; cursor:pointer; }
+#saveBtn { background-color:#F7AB55; color:#1B4A5A; border-radius:12px; padding:8px 15px; cursor:pointer; }
+
+/* Current Table Label */
+.current-table-label { font-weight:bold; font-size:35px; margin-top:-75px; }
+
+/* Table styling */
+table { border-collapse: collapse; width:100%; margin-top:10px; }
+th, td { padding:10px; border:1px solid var(--stroke-color); }
+th { background-color: var(--header-color); color: var(--text-sub); }
+td { color: var(--section-color); }
+tbody tr:nth-child(odd) td { background-color: var(--row1); }
+tbody tr:nth-child(even) td { background-color: var(--row2); }
+
+/* Buttons styling */
+button {
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+/* Delete buttons */
+button.delete-btn {
+  background-color: #D26F6F;
+  color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  padding: 7px;
+}
+button.delete-btn:hover { background-color:#b34f4f; }
+
+/* Add row button */
+button.add-btn {
+  background-color: var(--header-color);
+  color:white;
+  box-shadow:0 4px 8px rgba(0,0,0,0.3);
+  padding:10px;
+}
+button.add-btn:hover { background-color:#374b53; }
+
+td:last-child { text-align:center; vertical-align:middle; }
+
+/* Bubbles */
+.bubbles {
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+  pointer-events:none;
+}
+.bubbles img { position:absolute; width:40px; opacity:0.6; animation: floatUp linear infinite; }
+
+@keyframes floatUp {
+  0% { transform: translateY(100vh) scale(1); opacity:0; }
+  50% { opacity:.1; }
+  100% { transform: translateY(-10vh) scale(2); opacity:0; }
+}
+
+/******************************************/
+/* ========================= */
+/* 🌍 BODY BACKGROUND */
+/* ========================= */
+body.homepage-body {
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  overflow: hidden;
+
+  /* 80% ocean, 20% cream */
+  background: linear-gradient(
+    to right,
+    #1B4A5A 0%,
+    #1B4A5A 75%,
+    #256D7B 90%,
+    #fff1d4 100%
+  );
+}
+
+/* ========================= */
+/* 📦 WRAPPER */
+/* ========================= */
+.homepage-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+/* ========================= */
+/* 🧊 CARD (GLASS OCEAN STYLE) */
+/* ========================= */
+.homepage-card {
+  width: 75%;
+  height: 85%;
+  position: relative;
+  padding: 60px 80px;
+
+  border-radius: 30px;
+
+   background: linear-gradient(
+    to left,
+    #1B4A5A 0%,
+    #1B4A5A 85%,
+    #8EC1B8 99%,
+    #8EC1B8 100%
+  );
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  z-index: 2;
+}
+
+/* ========================= */
+/* 🧱 HEADER */
+/* ========================= */
+.header {
+  position: static;
+  align-items: center;
+  gap: 30px;
+}
+
+/* LOGO */
+.header.logo {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+}
+
+/* ========================= */
+/* 🔤 TEXT */
+/* ========================= */
+.title-text {
+  position: absolute;
+  top: 60px;
+  left: 360px; /* pushes it right of logo */
+}
+
+.title-text h1 {
+  margin: 0;
+  font-size: 180px;
+  color: #F7AB55;
+  line-height: 0.9;
+}
+
+.title-text p {
+  margin-top: 10px;
+  font-size: 36px;
+  color: #e0f7fa;
+  letter-spacing: 20px;
+}
+
+/* ========================= */
+/* 🐠 SEA CREATURES IMAGE */
+/* ========================= */
+.sea-img {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+
+  width: 560px;
+  opacity: 0.95;
+}
+
+/* ========================= */
+/* 🔘 BUTTONS */
+/* ========================= */
+.button-group {
+  position: absolute;
+  right: 40%;
+  bottom: 160px;
+  display: flex;
+  flex-direction: column; /* CONTINUE on top, ABOUT below */
+  align-items: center;
+  gap: 15px;
+}
+
+/* CONTINUE (primary, matches OCEAN SEVEN text color) */
+.start-btn {
+  padding: 18px 40px;
+  font-size: 35px;
+  font-weight: bold;
+
+  border-radius: 24px;
+  background-color: #F7AB55; /* same as OCEAN SEVEN */
+  color: #1B4A5A;
+
+  width: 260px;
+  text-align: center;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+/* ABOUT US (secondary) */
+.about-btn {
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 22px;
+  background-color: rgb(255, 255, 255);
+  color: #1B4A5A;
+
+  width: 180px;
+  text-align: center;
+  text-decoration: none;
+
+  transition: 0.3s;
+}
+
+/* HOVER EFFECTS */
+.start-btn:hover {
+  background-color: #e0a444; /* slightly darker gold for hover */
+}
+
+.about-btn:hover {
+  background-color: rgba(255,255,255,0.9);
+}
+
+/* HOVER EFFECTS */
+.start-btn:hover {
+  background-color: #163d49;
+}
+
+.about-btn:hover {
+  background-color: rgba(255,255,255,0.9);
+}
+
+/* ========================= */
+/* 🌊 WAVE ANIMATION (SVG) */
+/* ========================= */
+.wave-container {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.wave-container svg {
+  width: 100%;
+  height: 200%;
+}
+
+/* BASE */
+.wave {
+  fill: none;
+  stroke-linecap: round;
+}
+
+/* BACK */
+.wave-back {
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 3;
+  animation: waveMove 8s ease-in-out infinite;
+}
+
+/* MID */
+.wave-mid {
+  stroke: rgba(255, 255, 255, 0.4);
+  stroke-width: 4;
+  animation: waveMove 6s ease-in-out infinite reverse;
+}
+
+/* FRONT */
+.wave-front {
+  stroke: rgba(255, 255, 255, 0.7);
+  stroke-width: 5;
+  animation: waveMove 4s ease-in-out infinite;
+}
+
+/* ANIMATION */
+@keyframes waveMove {
+  0% {
+    transform: translateY(-250px);
+  }
+  50% {
+    transform: translateY(0px);
+  }
+  100% {
+    transform: translateY(-250px);
+  }
+}
+/* Lock page in one viewport */
+.about-page {
+  margin: 0;
+  font-family: 'Fredoka', sans-serif;
+  height: 100vh; /* full viewport height */
+  overflow: hidden; /* prevent scrolling */
+  background: linear-gradient(to bottom, #1B4A5A, #8EC1B8);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container with inner shadow */
+.about-container {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  width: 90%;
+  height: 90%; /* almost full viewport */
+  background-color: #FFEEDE;
+  border-radius: 20px;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+  padding: 20px;
+  margin-top: 200px;
+}
+
+/* Flex children (boat + text) */
+.about-flex {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  gap: 40px;
+}
+
+.about-left {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-boat {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 15px;
+}
+
+.about-right {
+  flex: 2;
+  overflow-y: auto; /* scroll internally if needed */
+  padding-left: 30px;
+}
+
+/* Hide scrollbar nicely */
+.about-right::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+/* Logo */
+/* Logo outside container */
+/* Logo floating on top of container *//* Logo floating on top of container */
+/* Make the logo float above the container */
+.about-logo {
+  position: absolute;      /* remove from normal flow */
+  top: -20px;               /* distance from top of viewport */
+  right: 1%;               /* center horizontally */
+  transform: translateX(-50%);  /* center exactly */
+  z-index: 2;              /* stay above container */
+  text-align: right;
+}
+
+/* Logo Text Styling */
+.about-ocean {
+
+  color: #F7AB55;
+  font-size: 108px;
+  font-weight: 700;
+}
+
+.about-vet {
+  color: #FFEEDE;
+  background-color: #f7ab5500;
+  padding: 6px 12px;
+  border-radius: 10px;
+  font-size: 34px;
+  margin-left: 10px;
+  letter-spacing: 9px;
+  font-weight: normal;
+
+}
+/* Title */
+.about-title {
+  color: #D2944B;
+  margin-bottom: 30px;
+  font-size: 32px;
+}
+
+/* Section Titles */
+.about-section-title {
+  color: #1C4B5B;
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+/* Text */
+.about-text {
+  color: #1F7693;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Table */
+.about-table {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: collapse;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Table Header */
+.about-table th {
+  background-color: #48626A;
+  color: #FFEEDE;
+  padding: 15px;
+  border: 2px solid #D2944B;
+}
+
+/* Table Cells */
+.about-table td {
+  background-color: #FFEEDE;
+  color: #48626A;
+  padding: 15px;
+  text-align: center;
+  border: 2px solid #D2944B;
+}
+
+/* Waves at bottom */
+.about-wave-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px; /* fixed height */
+  overflow: hidden;
+}
+
+.about-wave-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Wave colors */
+.about-wave-back {
+  fill: rgba(255, 255, 255, 0.1);
+}
+
+.about-wave-mid {
+  fill: rgba(255, 255, 255, 0.15);
+}
+
+.about-wave-front {
+  fill: rgba(255, 255, 255, 0.25);
+}
+
